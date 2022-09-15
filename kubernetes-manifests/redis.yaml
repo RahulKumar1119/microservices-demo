@@ -36,7 +36,11 @@ spec:
             memory: 200Mi
       volumes:
       - name: redis-data
-        emptyDir: {}
+        #emptyDir: {}
+        hostPath:
+      # Ensure the file directory is created.
+        path: /var/local/redus
+        type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
